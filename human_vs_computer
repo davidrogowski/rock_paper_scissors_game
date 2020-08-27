@@ -1,0 +1,59 @@
+import random
+
+human_wins = 0
+computer_wins = 0
+winning_score = 5
+
+while human_wins < winning_score and computer_wins < winning_score:
+    print(f'\nHuman Score: {human_wins} Computer Score: {computer_wins}')
+    print('Rock...')
+    print('Paper...')
+    print('Scissors...')
+    print('            SHOOT!\n')
+
+    human = input('Human, make your move: ').lower()
+    if human == 'quit' or human == 'q':
+        break
+
+    rand_num = random.randint(0,2)
+    if rand_num == 0:
+        computer = 'rock'
+    elif rand_num == 1:
+        computer = 'paper'
+    else:
+        computer = 'scissors'
+    print(f'Computer plays: {computer}')
+
+    if human == computer:
+        print("It's a tie!")
+    elif human == 'rock':
+        if computer == 'scissors':
+            print('Human wins this round')
+            human_wins += 1
+        elif computer == 'paper':
+            print('Computer wins this round')
+            computer_wins += 1
+    elif human == 'paper':
+        if computer == 'rock':
+            print('Human wins this round')
+            human_wins += 1
+        elif computer == 'scissors':
+            print('Computer wins this round')
+            computer_wins += 1
+    elif human == 'scissors':
+        if computer == 'paper':
+            print('Human wins this round')
+            human_wins += 1
+        elif computer == 'rock':
+            print('Computer wins this round')
+            computer_wins += 1
+    else:
+        print('Please enter a VALID move :)')
+
+if human_wins > computer_wins:
+    print('\nYOU WON!')
+elif human_wins == computer_wins:
+    print("\nIT'S A TIE!")
+else:
+    print('\nYOU LOSE!')
+print(f'\nFINAL SCORE: Human Score: {human_wins} Computer Score: {computer_wins}')
